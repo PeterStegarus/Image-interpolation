@@ -47,10 +47,7 @@ function R = bilinear_resize(I, p, q)
       % sistemul de coordonate de la 1 la n pentru a aplica interpolarea
       
       % TODO: afla punctele ce inconjoara punctul (xp, yp)
-      xp1 = floor(xp);
-      xp2 = ceil(xp);
-      yp1 = floor(yp);
-      yp2 = ceil(yp);
+      [xp1 yp1 xp2 yp2] = surrounding_points(m, n, xp, yp);
       % TODO: calculeaza coeficientii de interplare a
       a = bilinear_coef(double(I'), xp1, yp1, xp2, yp2);
       % TODO: calculeaza valoarea interpolata a pixelului (x, y)
