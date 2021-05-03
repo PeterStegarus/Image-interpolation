@@ -66,5 +66,5 @@ function R = nn_resize(I, p, q)
   endfor
   
   % TODO: converteste matricea rezultat la uint8
-  
+  R = (uint8)(R);
 endfunction
