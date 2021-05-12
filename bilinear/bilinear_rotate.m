@@ -51,8 +51,9 @@ function R = bilinear_rotate(I, rotation_angle)
       % TODO: afla punctele ce inconjoara punctul (xp, yp)
       [xp1 yp1 xp2 yp2] = surrounding_points(m, n, xp, yp);
       % TODO: calculeaza coeficientii de interpolare a
-      a = bilinear_coef(I, xp1, yp1, xp2, yp2);
+      a = bilinear_coef(double(I'), xp1, yp1, xp2, yp2);
       % TODO: calculeaza valoarea interpolata a pixelului (x, y)
+      R(x + 1, y + 1) = round([1 xp yp xp*yp] * a);
       % Obs: pentru scrierea in imagine, x si y sunt in coordonate de
       % la 0 la n - 1 si trebuie aduse in coordonate de la 1 la n
       
@@ -60,5 +61,5 @@ function R = bilinear_rotate(I, rotation_angle)
   endfor
   
   % transforma matricea rezultat in uint8 pentru a fi o imagine valida
-  
+  R = uint8(R);
 endfunction
