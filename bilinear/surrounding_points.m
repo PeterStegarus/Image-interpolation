@@ -15,10 +15,10 @@ function [x1 y1 x2 y2] = surrounding_points(m, n, x, y)
   
   % TODO: analog daca x se afla pe ultima coloana
   
-  if x > m
-    x = m;
+  if x2 > m
+    x2 = m;
   endif
-  if y > n
-    y = n;
+  if y2 > n
+    y2 = n;
   endif
   endfunction

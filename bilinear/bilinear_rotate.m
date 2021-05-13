@@ -38,15 +38,18 @@ function R = bilinear_rotate(I, rotation_angle)
     for y = 0 : n - 1
       % TODO: aplica transformarea inversa asupra (x, y) si calculeaza
       % x_p si y_p din spatiul imaginii initiale
-      [xp yp] = T * [x y]';
+      p = (T * [x y]')';
+      xp = p(1);
+      yp = p(2);
       % trece (xp, yp) din sistemul de coordonate de la 0 la n - 1 in
       % sistemul de coordonate de la 1 la n pentru a aplica interpolarea
       xp = xp + 1;
       yp = yp + 1;
       % TODO: daca xp sau yp se afla in afara imaginii, pune un pixel
       % negru in imagine si treci mai departe
-      if (xp > m) || (yp > n)
-        R(xp, yp) = 0;
+      if ((xp > m) || (xp < 1) || (yp > n) || (yp < 1))
+        R(x + 1, y + 1) = 0;
+        continue;
       endif
       % TODO: afla punctele ce inconjoara punctul (xp, yp)
       [xp1 yp1 xp2 yp2] = surrounding_points(m, n, xp, yp);

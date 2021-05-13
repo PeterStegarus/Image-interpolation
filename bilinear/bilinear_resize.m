@@ -25,8 +25,8 @@ function R = bilinear_resize(I, p, q)
   
   
   % TODO: calculeaza factorii de scalare
-  sx = p / (m - 1);
-  sy = q / (n - 1);
+  sx = (p - 1) / (m - 1);
+  sy = (q - 1) / (n - 1);
   % Obs: daca se lucreaza cu indici in intervalul [0, n - 1], ultimul
   % pixel al imaginii se va deplasa de la (m - 1, n - 1) la (p, q).
   % s_x nu va fi q ./ n
@@ -59,5 +59,5 @@ function R = bilinear_resize(I, p, q)
   endfor
   
   % TODO: transforma matricea rezultat in uint8 pentru a fi o imagine valida
-  R = (uint8)(R);
+##  R = (uint8)(R);
 endfunction
