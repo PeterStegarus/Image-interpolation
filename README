@@ -29,6 +29,16 @@ octave checker_bilinear.m
 
 2. Change log
 
+v4, 06-06-2021
+- Am actualizat testele a.i. sa se foloseasca formula corecta pentru factorii
+de scalare (inainte in solutia de referinta era un -1 lipsa).
+
+v3, 06-05-2021:
+- S-au rezolvat problemele cu testele care aveau -1 in referinta
+- S-au rezolvat problemele in cadrul verificarii efectuate de checker. Uneori
+cand se scadea din referinta imaginea uint8, rezultatele negative erau ignorate
+si trecute drept 0
+
 v2, 28-04-2021:
 - S-au modificat testele astfel incat sa se faca upsizing, nu downsizing
 - S-au modificat testele a.i. sa nu se obtina rezultate diferite pe Windows

@@ -42,8 +42,8 @@ function R = nn_resize(I, p, q)
   %p/(m-1) (exemplu linia 1: coloana 27, unde apare a doua oara consecutiv
   %numarul 129, ar trebui sa fie de fapt 65, iar 65 din dreapta ar trebui
   %sa fie 52 samd
-  sx = (p) / (m - 1);
-  sy = (q) / (n - 1);
+  sx = (p - 1) / (m - 1);
+  sy = (q - 1) / (n - 1);
   % TODO: calculeaza inversa transformarii
   invT = [1 / sx; 1 / sy];
   
