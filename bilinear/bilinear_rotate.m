@@ -8,6 +8,8 @@ function R = bilinear_rotate(I, rotation_angle)
   
   [m n nr_colors] = size(I);
   
+  I = double(I);
+  
   % daca imaginea e alb negru, ignora
   if nr_colors > 1
     R = -1;

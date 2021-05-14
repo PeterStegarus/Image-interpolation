@@ -8,7 +8,7 @@ function R = bilinear_resize(I, p, q)
   
   % initializeaza matricea finala
   R = zeros(p, q);
-  
+  I = double(I);
   % daca imaginea e alb negru, ignora
   if nr_colors > 1
     R = -1;
@@ -31,10 +31,6 @@ function R = bilinear_resize(I, p, q)
   % pixel al imaginii se va deplasa de la (m - 1, n - 1) la (p, q).
   % s_x nu va fi q ./ n
   
-  % TODO: defineste matricea de transformare pentru redimensionare
-  
-  % TODO: calculeaza inversa transformarii
-  
   % parcurge fiecare pixel din imagine
   % foloseste coordonate de la 0 la n - 1
   for x = 0 : p - 1
@@ -43,9 +39,6 @@ function R = bilinear_resize(I, p, q)
       % x_p si y_p din spatiul imaginii initiale
       xp = x / sx + 1;
       yp = y / sy + 1;
-      % TODO: trece (xp, yp) din sistemul de coordonate de la 0 la n - 1 in
-      % sistemul de coordonate de la 1 la n pentru a aplica interpolarea
-      
       % TODO: afla punctele ce inconjoara punctul (xp, yp)
       [xp1 yp1 xp2 yp2] = surrounding_points(m, n, xp, yp);
       % TODO: calculeaza coeficientii de interplare a
@@ -59,5 +52,5 @@ function R = bilinear_resize(I, p, q)
   endfor
   
   % TODO: transforma matricea rezultat in uint8 pentru a fi o imagine valida
-##  R = (uint8)(R);
+  R = (uint8)(R);
 endfunction

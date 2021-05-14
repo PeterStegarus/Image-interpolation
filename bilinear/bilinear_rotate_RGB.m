@@ -7,9 +7,9 @@ function out = bilinear_rotate_RGB(img, rotation_angle)
   g = img(:,:,2);
   b = img(:,:,3);
   
-  outr = bilinear_rotate(r, p, q);
-  outg = bilinear_rotate(g, p, q);
-  outb = bilinear_rotate(b, p, q);
+  outr = bilinear_rotate(r, rotation_angle);
+  outg = bilinear_rotate(g, rotation_angle);
+  outb = bilinear_rotate(b, rotation_angle);
   
   out(:,:,1) = outr;
   out(:,:,2) = outg;

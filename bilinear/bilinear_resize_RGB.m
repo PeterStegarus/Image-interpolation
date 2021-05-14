@@ -9,9 +9,9 @@ function out = bilinear_resize_RGB(img, p, q)
   g = img(:,:,2);
   b = img(:,:,3);
   
-  outr = bilinear_resize(r, rotation_angle);
-  outg = bilinear_resize(g, rotation_angle);
-  outb = bilinear_resize(b, rotation_angle);
+  outr = bilinear_resize(r,  p, q);
+  outg = bilinear_resize(g,  p, q);
+  outb = bilinear_resize(b,  p, q);
   
   out(:,:,1) = outr;
   out(:,:,2) = outg;

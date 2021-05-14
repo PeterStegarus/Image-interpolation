@@ -8,10 +8,11 @@ function R = nn_resize(I, p, q)
   
   % convertește imaginea de intrare la alb-negru daca este cazul
   if nr_colors > 1
-    R = -1;          
-##    R = (I(:,:,1) + I(:,:,2) + I(:,:,3)) / 3;
+    R = -1;
     return
   endif
+  
+  I = double(I);
   
   % initializeaza matricea finala
   R = zeros(p, q);
@@ -30,18 +31,6 @@ function R = nn_resize(I, p, q)
   % s_x nu va fi q ./ n
   
   % TODO: defineste matricea de transformare pentru redimensionare
-  %Consider ca e gresit p/(m-1) si q/(m-1), dar aparent checkerul
-  %puncteaza asa
-  %Corect ar fi (p-1)/(m-1) si (q-1)/(m-1) pentru ca se presupune
-  %ca se face indexerea de la 0 in ambele matrice ale imaginilor.
-  %Nu pare corect sa facem indexarea de la 0 intr-o matrice si de
-  %la 1 in cealalta. In plus, pentru primul test din checker, pentru
-  %culoarea rosu, desi numarul de coloane ramane acelasi, elementele
-  %de pe coloana 27 si mai mare par sa ia valorile elementelor de pe
-  %coloana cu 1 mai in spate, daca se foloseste formula asta incorecta
-  %p/(m-1) (exemplu linia 1: coloana 27, unde apare a doua oara consecutiv
-  %numarul 129, ar trebui sa fie de fapt 65, iar 65 din dreapta ar trebui
-  %sa fie 52 samd
   sx = (p - 1) / (m - 1);
   sy = (q - 1) / (n - 1);
   % TODO: calculeaza inversa transformarii
@@ -55,11 +44,7 @@ function R = nn_resize(I, p, q)
       % x_p si y_p din spatiul imaginii initiale
       xp = round(x / sx);
       yp = round(y / sy);
-      % TODO: trece (xp, yp) din sistemul de coordonate de la 0 la n - 1 in
-      % sistemul de coordonate de la 1 la n pentru a aplica interpolarea
-      
-      % TODO: calculeaza cel mai apropiat vecin
-      
+
       % TODO: calculeaza valoarea pixelului din imaginea finala
       R(x + 1, y + 1) = I(xp + 1, yp + 1);
     endfor
